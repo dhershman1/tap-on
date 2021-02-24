@@ -1,0 +1,23 @@
+#! /usr/bin/env node
+
+/* Modules */
+const parsedArgs = require('minimist')(process.argv.slice(2), {
+  alias: {
+    v: 'version'
+  }
+})
+const { version } = require('../package.json')
+const parser = require('../src/index.js')
+const { createReadStream } = require('fs')
+const path = require('path')
+
+/* Output */
+if (parsedArgs.version) {
+  console.log(version)
+} else if (parsedArgs.input) {
+  createReadStream(path.join(process.cwd(), parsedArgs.input))
+    .pipe(parser(parsedArgs))
+} else {
+  process.stdin
+    .pipe(parser(parsedArgs))
+}
