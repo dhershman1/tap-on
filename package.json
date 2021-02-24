@@ -1,0 +1,27 @@
+{
+  "name": "on-tap",
+  "version": "0.1.0",
+  "description": "A nicer way to handle read tap output",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhershman1/on-tap.git"
+  },
+  "keywords": [
+    "tape",
+    "tap",
+    "pretty",
+    "on-tap",
+    "on",
+    "tap"
+  ],
+  "author": "Dustin Hershman <dustinh17@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhershman1/on-tap/issues"
+  },
+  "homepage": "https://github.com/dhershman1/on-tap#readme"
+}
