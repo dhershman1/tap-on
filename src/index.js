@@ -1,7 +1,5 @@
 /* Modules */
-const { EOL } = require('os')
 const Parser = require('tap-parser')
-const path = require('path')
 
 function onTap (args) {
   const tap = new Parser()
