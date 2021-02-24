@@ -7,17 +7,13 @@ const parsedArgs = require('minimist')(process.argv.slice(2), {
   }
 })
 const { version } = require('../package.json')
-const parser = require('../src/index.js')
-const { createReadStream } = require('fs')
-const path = require('path')
+const onTap = require('../src/index.js')
 
 /* Output */
 if (parsedArgs.version) {
   console.log(version)
-} else if (parsedArgs.input) {
-  createReadStream(path.join(process.cwd(), parsedArgs.input))
-    .pipe(parser(parsedArgs))
 } else {
   process.stdin
-    .pipe(parser(parsedArgs))
+    .pipe(onTap(parsedArgs))
+    .pipe(process.stdout)
 }
