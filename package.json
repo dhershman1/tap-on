@@ -4,7 +4,7 @@
   "description": "A nicer way to handle read tap output",
   "main": "src/index.js",
   "scripts": {
-    "test": "tape examples/pass.js | cross-env bin/on-tap",
+    "test": "tape examples/pass.js | cross-env bin/on-tap -f",
     "lint": "standard src/** | snazzy"
   },
   "bin": {
@@ -30,15 +30,17 @@
   },
   "homepage": "https://github.com/dhershman1/on-tap#readme",
   "dependencies": {
-    "colorette": "^1.2.1",
+    "colorette": "^1.2.2",
+    "duplexer3": "^0.1.4",
     "minimist": "^1.2.5",
-    "tap-parser": "^10.1.0"
+    "tap-parser": "^10.1.0",
+    "through2": "^4.0.2"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
     "snazzy": "^9.0.0",
     "standard": "^16.0.3",
-    "tape": "^5.2.0"
+    "tape": "^5.2.2"
   }
 }
