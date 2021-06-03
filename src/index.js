@@ -15,7 +15,6 @@ function onTap (args) {
   const stream = duplexer(tap, output)
   const bundles = []
   let stats = { runningTsts: [], title: '' }
-  let currCmt = ''
 
   output.push('\n')
 
@@ -27,27 +26,22 @@ function onTap (args) {
 
   // Event for each assert inside the current Test
   tap.on('assert', res => {
-    console.log('ASSERT', res)
-    output.push(`\n${pad(underline(currCmt || res.name))}\n\n`)
+    // console.log('ASSERT', res)
     stats.runningTsts.push(res)
   })
 
   tap.on('comment', res => {
-    console.log('COMMENT', res)
-    // if (!titleCmts.old && titleCmts.curr) {
-    //   titleCmts.old = titleCmts.curr
-    //   titleCmts.curr = res
-    // }
+    // console.log('COMMENT', res)
+
+    if (stats.title !== res) {
+      output.push(`\n${pad(underline(res))}\n\n`)
+    }
 
     if (!stats.title && !stats.runningTsts.length) {
       stats.title = res
     } else {
       bundles.push(stats)
       stats = { runningTsts: [], title: res }
-    }
-
-    if (args.usingTape) {
-      currCmt = res
     }
   })
 
