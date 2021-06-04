@@ -4,7 +4,7 @@
   "description": "A nicer way to handle read tap output",
   "main": "src/index.js",
   "scripts": {
-    "test": "tape examples/pass.js | cross-env bin/on-tap -u",
+    "test": "tape examples/pass.js | cross-env bin/on-tap",
     "lint": "standard src/** | snazzy"
   },
   "bin": {
