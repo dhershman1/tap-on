@@ -1,10 +1,10 @@
-# on-tap
+# tap-on
 
 Another [tape](https://github.com/substack/tape)/tap output formatter for running tests
 
 I built this package primarily to use with tape, and its tap output. The biggest issue with tap is that the way its output is structured can almost be anything.
 
-If you need or want to use on-tap and it comes out ugle, or just flat out doesn't work please open an issue! I will be glad to help!
+If you need or want to use tap-on and it comes out ugle, or just flat out doesn't work please open an issue! I will be glad to help!
 
 ## Parameters
 
@@ -14,21 +14,21 @@ If you need or want to use on-tap and it comes out ugle, or just flat out doesn'
 ## Installation
 
 ```
-npm i -D on-tap
+npm i -D tap-on
 ```
 
 ## Usage
 
-You can simply pass your tap output into `on-tap` through a pipe or other means
+You can simply pass your tap output into `tap-on` through a pipe or other means
 
 ```
-tape test/*.js | on-tap
+tape test/*.js | tap-on
 
-tape test/*.js | on-tap -u -s
+tape test/*.js | tap-on -u -s
 
-node test.js | ./node_modules/on-tap/bin/on-tap -u
+node test.js | ./node_modules/tap-on/bin/tap-on -u
 
-on-tap -u < src/test/non-tape.tap
+tap-on -u < src/test/non-tape.tap
 ```
 
 ## Output
@@ -45,6 +45,6 @@ The stats at the bottom work like so:
 
 Here are some examples of the output:
 
-![on-tap-example1](https://user-images.githubusercontent.com/8997380/120854433-2b068a00-c54b-11eb-8886-ed5c2ff0e2b8.png)
-![on-tap-example2](https://user-images.githubusercontent.com/8997380/120854441-2cd04d80-c54b-11eb-9125-88619f28761c.png)
-![on-tap-example3](https://user-images.githubusercontent.com/8997380/120854444-2e017a80-c54b-11eb-8c51-27e3c9d83205.png)
+![on-tap-example1](https://user-images.githubusercontent.com/8997380/120860729-25617200-c554-11eb-9a72-165598830599.png)
+![on-tap-example2](https://user-images.githubusercontent.com/8997380/120860730-25617200-c554-11eb-9e55-7026b416f2c8.png)
+![on-tap-example3](https://user-images.githubusercontent.com/8997380/120860727-24c8db80-c554-11eb-85ef-ccff03ab267a.png)

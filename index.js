@@ -35,7 +35,7 @@ function formatFail (f, hideStack) {
   return err.concat(pad(cyan(`  Stack: ${prettyStack(f.diag.stack)}`))).join('\n')
 }
 
-function onTap (args) {
+function tapOn (args) {
   const startTime = new Date().getTime()
   const tap = new Parser()
   const output = through()
@@ -93,4 +93,4 @@ function onTap (args) {
   return stream
 }
 
-module.exports = onTap
+module.exports = tapOn

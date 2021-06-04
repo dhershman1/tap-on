@@ -9,13 +9,13 @@ const parsedArgs = require('minimist')(process.argv.slice(2), {
   }
 })
 const { version } = require('../package.json')
-const onTap = require('../index.js')
+const tapOn = require('../index.js')
 
 /* Output */
 if (parsedArgs.version) {
   console.log(version)
 } else {
   process.stdin
-    .pipe(onTap(parsedArgs))
+    .pipe(tapOn(parsedArgs))
     .pipe(process.stdout)
 }

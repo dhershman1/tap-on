@@ -1,25 +1,26 @@
 {
-  "name": "on-tap",
+  "name": "tap-on",
   "version": "0.1.0",
-  "description": "A nicer way to handle read tap output",
+  "description": "A nicer way to handle tap output",
   "main": "index.js",
   "scripts": {
     "prepack": "npm run lint",
-    "test": "tape tests/pass.js | cross-env bin/on-tap",
+    "test": "tape tests/pass.js | cross-env bin/tap-on",
     "lint": "standard src/** | snazzy"
   },
   "bin": {
-    "on-tap": "bin/on-tap"
+    "tap-on": "bin/tap-on"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhershman1/on-tap.git"
+    "url": "git+https://github.com/dhershman1/tap-on.git"
   },
   "keywords": [
     "tape",
     "tap",
     "test",
     "pretty",
+    "tap-on",
     "on-tap",
     "on",
     "tap"
@@ -27,9 +28,9 @@
   "author": "Dustin Hershman <dustinh17@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dhershman1/on-tap/issues"
+    "url": "https://github.com/dhershman1/tap-on/issues"
   },
-  "homepage": "https://github.com/dhershman1/on-tap#readme",
+  "homepage": "https://github.com/dhershman1/tap-on#readme",
   "dependencies": {
     "colorette": "^1.2.2",
     "duplexer3": "^0.1.4",
