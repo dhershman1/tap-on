@@ -2,7 +2,7 @@
   "name": "on-tap",
   "version": "0.1.0",
   "description": "A nicer way to handle read tap output",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "tape examples/pass.js | cross-env bin/on-tap",
     "lint": "standard src/** | snazzy"
