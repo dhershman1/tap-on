@@ -32,6 +32,7 @@
   "dependencies": {
     "colorette": "^1.2.2",
     "duplexer3": "^0.1.4",
+    "figures": "^3.2.0",
     "minimist": "^1.2.5",
     "tap-parser": "^10.1.0",
     "through2": "^4.0.2"
