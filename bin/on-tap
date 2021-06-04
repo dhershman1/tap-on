@@ -4,7 +4,8 @@
 const parsedArgs = require('minimist')(process.argv.slice(2), {
   alias: {
     v: 'version',
-    s: 'stack'
+    s: 'stack',
+    u: 'summarize'
   }
 })
 const { version } = require('../package.json')
