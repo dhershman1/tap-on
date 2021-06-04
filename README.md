@@ -2,7 +2,9 @@
 
 Another [tape](https://github.com/substack/tape)/tap output formatter for running tests
 
-I built this package primarily to use with tape, but it should support _most_ tap outputs. However the way they get parsed may differ quite a bit.
+I built this package primarily to use with tape, and its tap output. The biggest issue with tap is that the way its output is structured can almost be anything.
+
+If you need or want to use on-tap and it comes out ugle, or just flat out doesn't work please open an issue! I will be glad to help!
 
 ## Parameters
 
