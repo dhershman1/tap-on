@@ -45,8 +45,6 @@ function onTap (args) {
   let skippedTests = 0
   let lastStr = ''
 
-  output.push('\n')
-
   tap.on('pass', assert => {
     output.push(pad(`  ${green(symbols.tick)} ${dim(assert.name)}\n`))
   })
