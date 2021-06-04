@@ -5,9 +5,7 @@ const Parser = require('tap-parser')
 const symbols = require('figures')
 
 function isFinalStats (str) {
-  // Longhand:
-  // /^(tests|pass|fail|skip|failed):?\s\d\s?(of)?\s\d?\s(tests)?/
-  return /^#\s(tests|pass|fail|skip|failed):?\s{1,}\d/.test(str)
+  return /^#\s(ok|tests|pass|fail|skip|failed):?\s{1,}\d?/.test(str)
 }
 
 function pad (str) {
