@@ -31,6 +31,14 @@ on-tap -u < src/test/non-tape.tap
 
 The output was built to look a bit like the [tap-spec](https://github.com/scottcorgan/tap-spec) module but without some dependencies like Lodash.
 
+The stats at the bottom work like so:
+
+- `Total`: Total number of tests run
+- `Passed`: Total passing tests
+- `Failed`: Total failing tests
+- `Skipped`: Total **SKIPPED** tests (**NOT** skipped assertions)
+- `Duration`: Total time took to run
+
 Here are some examples of the output:
 
 ![on-tap-example1](https://user-images.githubusercontent.com/8997380/120854433-2b068a00-c54b-11eb-8886-ed5c2ff0e2b8.png)
