@@ -4,6 +4,7 @@
   "description": "A nicer way to handle read tap output",
   "main": "index.js",
   "scripts": {
+    "prepack": "npm run lint",
     "test": "tape tests/pass.js | cross-env bin/on-tap",
     "lint": "standard src/** | snazzy"
   },
