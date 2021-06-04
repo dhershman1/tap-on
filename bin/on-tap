@@ -3,7 +3,8 @@
 /* Modules */
 const parsedArgs = require('minimist')(process.argv.slice(2), {
   alias: {
-    v: 'version'
+    v: 'version',
+    s: 'stack'
   }
 })
 const { version } = require('../package.json')
