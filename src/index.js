@@ -1,5 +1,4 @@
-/* Modules */
-const { dim, underline, green, cyan, red } = require('colorette')
+const { bold, dim, underline, green, cyan, red } = require('colorette')
 const through = require('through2')
 const duplexer = require('duplexer3')
 const Parser = require('tap-parser')
@@ -19,34 +18,41 @@ function prettyStack (rawError) {
   return rawError.split('\n').map(pad).join('\n') + '\n'
 }
 
+function formatFail (f, hideStack) {
+  const title = `${symbols.cross} ${f.name}`
+  const divider = Array.from(title, () => '-').join('')
+  const err = [
+    pad(`  ${red(title)}`),
+    pad(`  ${red(divider)}`),
+    pad(cyan(`  Operator: ${f.diag.operator}`)),
+    pad(cyan(`  Expected: ${f.diag.expected}`)),
+    pad(cyan(`  Actual: ${f.diag.actual}`)),
+    pad(cyan(`  At: ${f.diag.at}`))
+  ]
+
+  if (hideStack) {
+    return err.join('\n')
+  }
+
+  return err.concat(pad(cyan(`  Stack: ${prettyStack(f.diag.stack)}`))).join('\n')
+}
+
 function onTap (args) {
   const startTime = new Date().getTime()
   const tap = new Parser()
   const output = through()
   const stream = duplexer(tap, output)
+  let skippedTests = 0
   let lastStr = ''
 
   output.push('\n')
-
-  /* Parser Event listening */
 
   tap.on('pass', assert => {
     output.push(pad(`  ${green(symbols.tick)} ${dim(assert.name)}\n`))
   })
 
   tap.on('fail', assert => {
-    const title = `${symbols.cross} ${assert.name}`
-    const divider = Array.from(title, () => '-').join('')
-
-    output.push(pad(`  ${red(title)}\n`))
-    output.push(pad(`  ${red(divider)}\n`))
-    output.push(pad(cyan(`  Operator: ${assert.diag.operator}\n`)))
-    output.push(pad(cyan(`  Expected: ${assert.diag.expected}\n`)))
-    output.push(pad(cyan(`  Actual: ${assert.diag.actual}\n`)))
-    output.push(pad(cyan(`  At: ${assert.diag.at}\n`)))
-    if (!args.stack) {
-      output.push(pad(cyan(`  Stack: ${prettyStack(assert.diag.stack)}\n`)))
-    }
+    output.push(formatFail(assert, args.stack))
   })
 
   tap.on('skip', assert => {
@@ -54,7 +60,13 @@ function onTap (args) {
   })
 
   tap.on('comment', res => {
-    if (/SKIP/.test(res) || isFinalStats(res)) {
+    const isSkip = /# SKIP/.test(res)
+
+    if (isSkip || isFinalStats(res)) {
+      if (isSkip) {
+        skippedTests++
+      }
+
       return
     }
 
@@ -67,9 +79,18 @@ function onTap (args) {
   })
 
   tap.on('complete', results => {
+    if (args.summarize) {
+      const failCount = results.failures.length
+      const [past, plural] = failCount === 1 ? ['was', 'failure'] : ['were', 'failures']
+      const finalFailMsg = `${bold(red('Failed Tests:'))} There ${past} ${bold(red(failCount))} ${plural}\n\n`
+
+      output.push('\n' + pad(finalFailMsg))
+      results.failures.forEach(f => output.push(formatFail(f, args.stack)))
+    }
     output.push('\n' + pad(`Total: ${results.count}\n`))
     output.push(pad(green(`Passed: ${results.pass}\n`)))
     output.push(pad(red(`Failed: ${results.fail}\n`)))
+    output.push(pad(cyan(`Skipped: ${skippedTests}\n`)))
     output.push(pad(`Duration: ${new Date().getTime() - startTime}ms\n\n`))
   })
 
