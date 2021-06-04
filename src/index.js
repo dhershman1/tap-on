@@ -73,7 +73,7 @@ function onTap (args) {
     const cleanedStr = res.replace('# ', '')
 
     if (lastStr !== cleanedStr) {
-      output.push(`\n${pad(underline(cleanedStr))}\n`)
+      output.push(`\n\n${pad(underline(cleanedStr))}\n`)
       lastStr = cleanedStr
     }
   })
