@@ -83,7 +83,7 @@ function onTap (args) {
       const finalFailMsg = `${bold(red('Failed Tests:'))} There ${past} ${bold(red(failCount))} ${plural}\n\n`
 
       output.push('\n' + pad(finalFailMsg))
-      results.failures.forEach(f => output.push(formatFail(f, args.stack)))
+      results.failures.forEach(f => output.push(`${formatFail(f, args.stack)}\n`))
     }
     output.push('\n' + pad(`Total: ${results.count}\n`))
     output.push(pad(green(`Passed: ${results.pass}\n`)))
