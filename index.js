@@ -8,8 +8,8 @@ function isFinalStats (str) {
   return /^#\s(ok|tests|pass|fail|skip|failed):?\s{1,}\d?/.test(str)
 }
 
-function pad (str) {
-  return `  ${str}`
+function pad (str, n = 2) {
+  return str.padStart(str.length + n)
 }
 
 function prettyStack (rawError) {
@@ -20,12 +20,12 @@ function formatFail (f, hideStack) {
   const title = `${symbols.cross} ${f.name}`
   const divider = Array.from(title, () => '-').join('')
   const err = [
-    pad(`  ${red(title)}`),
-    pad(`  ${red(divider)}`),
-    pad(cyan(`  Operator: ${f.diag.operator}`)),
-    pad(cyan(`  Expected: ${f.diag.expected}`)),
-    pad(cyan(`  Actual: ${f.diag.actual}`)),
-    pad(cyan(`  At: ${f.diag.at}`))
+    pad(`${red(title)}`, 4),
+    pad(`${red(divider)}`, 4),
+    pad(cyan(`Operator: ${f.diag.operator}`), 4),
+    pad(cyan(`Expected: ${f.diag.expected}`), 4),
+    pad(cyan(`Actual: ${f.diag.actual}`), 4),
+    pad(cyan(`At: ${f.diag.at}`), 4)
   ]
 
   if (hideStack) {
@@ -44,7 +44,7 @@ function tapOn (args) {
   let lastStr = ''
 
   tap.on('pass', assert => {
-    output.push(pad(`  ${green(symbols.tick)} ${dim(assert.name)}\n`))
+    output.push(pad(`${green(symbols.tick)} ${dim(assert.name)}\n`, 4))
   })
 
   tap.on('fail', assert => {
@@ -52,7 +52,7 @@ function tapOn (args) {
   })
 
   tap.on('skip', assert => {
-    output.push(pad(`  ${cyan('-  ' + assert.name)}\n`))
+    output.push(pad(`${cyan('-  ' + assert.name)}\n`, 4))
   })
 
   tap.on('comment', res => {
