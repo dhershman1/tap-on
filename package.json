@@ -1,6 +1,6 @@
 {
   "name": "tap-on",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A nicer way to handle tap output",
   "main": "index.js",
   "scripts": {
