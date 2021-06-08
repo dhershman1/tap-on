@@ -1,12 +1,12 @@
 {
   "name": "tap-on",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A nicer way to handle tap output",
   "main": "index.js",
   "scripts": {
     "prepack": "npm run lint",
     "test": "tape tests/pass.js | cross-env bin/tap-on",
-    "lint": "standard src/** | snazzy"
+    "lint": "standard index.js | snazzy"
   },
   "bin": {
     "tap-on": "bin/tap-on"
