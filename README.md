@@ -1,5 +1,8 @@
 # tap-on
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/dhershman1/tap-on.svg?style=flat-square&logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dhershman1/tap-on/context:javascript)
+[![npm](https://img.shields.io/npm/v/tap-on.svg?style=flat-square)](https://www.npmjs.com/package/tap-on)
+
 Another [tape](https://github.com/substack/tape)/tap output formatter for running tests
 
 I built this package primarily to use with tape, and its tap output. The biggest issue with tap is that the way its output is structured can almost be anything.

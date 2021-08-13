@@ -10,6 +10,11 @@ test('1 === 1', t => {
   t.end()
 })
 
+test('1 === 1 with log', t => {
+  t.equal(1, 1, 'test is equal')
+  t.end()
+})
+
 test('2 === 2', t => {
   t.equal(2, 2)
   t.end()
