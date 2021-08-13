@@ -74,6 +74,10 @@ function tapOn (args) {
     }
   })
 
+  tap.on('extra', function (extra) {
+    output.push(pad(extra, 4))
+  })
+
   tap.on('complete', results => {
     if (args.summarize) {
       const failCount = results.failures.length
