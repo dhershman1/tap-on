@@ -1,4 +1,4 @@
-const { bold, dim, underline, green, cyan, red } = require('colorette')
+const { bold, cyan, dim, green, options, red, underline } = require('colorette')
 const through = require('through2')
 const duplexer = require('duplexer3')
 const Parser = require('tap-parser')
@@ -42,6 +42,10 @@ function tapOn (args) {
   const stream = duplexer(tap, output)
   let skippedTests = 0
   let lastStr = ''
+
+  if (args.disableColor) {
+    options.enabled = false
+  }
 
   tap.on('pass', assert => {
     output.push(pad(`${green(symbols.tick)} ${dim(assert.name)}\n`, 4))
