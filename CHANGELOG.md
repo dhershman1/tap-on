@@ -2,7 +2,7 @@
 
 ## v0.3.0
 
-### Added
+### New
 
 - New `disableColor` option so you can disable all color/style options besides the white space formatting
 
