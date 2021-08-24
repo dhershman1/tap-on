@@ -85,6 +85,10 @@ function tapOn (args) {
   })
 
   tap.on('complete', results => {
+    if ((results.count === 0 && results.skip === 0) || results.bailout) {
+      process.exit(1)
+    }
+
     if (args.summarize) {
       const failCount = results.failures.length
       const [past, plural] = failCount === 1 ? ['was', 'failure'] : ['were', 'failures']
