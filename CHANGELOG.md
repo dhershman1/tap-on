@@ -6,6 +6,14 @@
 
 - New `disableColor` option so you can disable all color/style options besides the white space formatting
 
+### Improved
+
+- Respect bailouts when they come back in the results
+
+### Fixed
+
+- If tape errors out, the error should now bubble back to the terminal instead of getting consumed by tap-on
+
 ## v0.2.0
 
 ### Improved
