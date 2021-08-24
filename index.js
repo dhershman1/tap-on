@@ -53,6 +53,8 @@ function tapOn (args) {
 
   tap.on('fail', assert => {
     output.push(formatFail(assert, args.stack))
+
+    stream.failed = true
   })
 
   tap.on('skip', assert => {
