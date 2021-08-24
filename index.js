@@ -1,4 +1,4 @@
-const { bold, dim, underline, green, cyan, red } = require('colorette')
+const { bold, cyan, dim, green, options, red, underline } = require('colorette')
 const through = require('through2')
 const duplexer = require('duplexer3')
 const Parser = require('tap-parser')
@@ -43,12 +43,18 @@ function tapOn (args) {
   let skippedTests = 0
   let lastStr = ''
 
+  if (args.disableColor) {
+    options.enabled = false
+  }
+
   tap.on('pass', assert => {
     output.push(pad(`${green(symbols.tick)} ${dim(assert.name)}\n`, 4))
   })
 
   tap.on('fail', assert => {
     output.push(formatFail(assert, args.stack))
+
+    stream.failed = true
   })
 
   tap.on('skip', assert => {
@@ -79,6 +85,10 @@ function tapOn (args) {
   })
 
   tap.on('complete', results => {
+    if ((results.count === 0 && results.skip === 0) || results.bailout) {
+      process.exit(1)
+    }
+
     if (args.summarize) {
       const failCount = results.failures.length
       const [past, plural] = failCount === 1 ? ['was', 'failure'] : ['were', 'failures']

@@ -5,7 +5,8 @@ const parsedArgs = require('minimist')(process.argv.slice(2), {
   alias: {
     v: 'version',
     s: 'stack',
-    u: 'summarize'
+    u: 'summarize',
+    d: 'disableColor'
   }
 })
 const { version } = require('../package.json')
@@ -18,4 +19,14 @@ if (parsedArgs.version) {
   process.stdin
     .pipe(tapOn(parsedArgs))
     .pipe(process.stdout)
+
+  process.on('exit', function (status) {
+    if (status === 1) {
+      process.exit(1)
+    }
+
+    if (tapOn.failed) {
+      process.exit(1)
+    }
+  })
 }
