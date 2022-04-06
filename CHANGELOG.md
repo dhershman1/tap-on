@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.1
+
+### Chore
+
+- Updated Crticial Dependencies, and Audited others
+
 ## v0.3.0
 
 ### New
