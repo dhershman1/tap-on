@@ -13,7 +13,7 @@ If you need or want to use tap-on and it comes out ugle, or just flat out doesn'
 
 - `-s, --stack`: This param will **hide** the stack trace in the fail messages you will still see the **at** however
 - `-u, --summarize`: Enables failure summaries at the **END** of your test report, useful if you have a lot of tests!
-- `-d, --disableColor`: Disables the styled output, and only keeps the icons, and spacing
+- `--no-color`: Disables colored output, and only keeps the icons, and spacing
 
 ## Installation
 

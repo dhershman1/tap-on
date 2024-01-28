@@ -1,6 +1,6 @@
 /* Modules */
 
-const test = require('tape')
+import test from 'tape'
 
 test('1 === 1', t => {
   t.plan(3)

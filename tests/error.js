@@ -1,4 +1,4 @@
-const test = require('tape')
+import test from 'tape'
 
 /* eslint-disable */
 

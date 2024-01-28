@@ -1,20 +1,20 @@
 #! /usr/bin/env node
 
 /* Modules */
-const parsedArgs = require('minimist')(process.argv.slice(2), {
+import minimist from 'minimist'
+import tapOn from '../index.js'
+
+const parsedArgs = minimist(process.argv.slice(2), {
   alias: {
     v: 'version',
     s: 'stack',
-    u: 'summarize',
-    d: 'disableColor'
+    u: 'summarize'
   }
 })
-const { version } = require('../package.json')
-const tapOn = require('../index.js')
 
 /* Output */
 if (parsedArgs.version) {
-  console.log(version)
+  console.log('v1.0.0')
 } else {
   process.stdin
     .pipe(tapOn(parsedArgs))
