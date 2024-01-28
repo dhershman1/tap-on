@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.0
+
+### New
+
+- Converted package into a standard ESM module
+
+### Chore
+
+- Dependency updates
+
 ## v0.3.1
 
 ### Chore
