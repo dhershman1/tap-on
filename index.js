@@ -25,14 +25,14 @@ function formatFail (f, hideStack) {
     pad(cyan(`Operator: ${f.diag.operator}`), 4),
     pad(cyan(`Expected: ${f.diag.expected}`), 4),
     pad(cyan(`Actual: ${f.diag.actual}`), 4),
-    pad(cyan(`At: ${f.diag.at}`), 4)
+    pad(cyan(`Fullname: ${f.fullname}`), 4)
   ]
 
   if (hideStack) {
     return err.join('\n')
   }
 
-  return err.concat(pad(cyan(`  Stack: ${prettyStack(f.diag.stack)}`))).join('\n')
+  return err.concat(pad(cyan(`  ${prettyStack(f.diag.stack)}`))).join('\n')
 }
 
 function tapOn (args) {
