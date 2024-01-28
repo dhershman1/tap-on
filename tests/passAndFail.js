@@ -1,6 +1,6 @@
 /* Modules */
 
-const test = require('tape')
+import test from 'tape'
 
 /* Tests */
 

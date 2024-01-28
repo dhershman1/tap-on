@@ -1,6 +1,5 @@
 # tap-on
 
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/dhershman1/tap-on.svg?style=flat-square&logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dhershman1/tap-on/context:javascript)
 [![npm](https://img.shields.io/npm/v/tap-on.svg?style=flat-square)](https://www.npmjs.com/package/tap-on)
 
 Another [tape](https://github.com/substack/tape)/tap output formatter for running tests
@@ -13,7 +12,7 @@ If you need or want to use tap-on and it comes out ugle, or just flat out doesn'
 
 - `-s, --stack`: This param will **hide** the stack trace in the fail messages you will still see the **at** however
 - `-u, --summarize`: Enables failure summaries at the **END** of your test report, useful if you have a lot of tests!
-- `-d, --disableColor`: Disables the styled output, and only keeps the icons, and spacing
+- `--no-color`: Disables colored output, and only keeps the icons, and spacing
 
 ## Installation
 

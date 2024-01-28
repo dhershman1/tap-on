@@ -1,8 +1,8 @@
-const { bold, cyan, dim, green, options, red, underline } = require('colorette')
-const through = require('through2')
-const duplexer = require('duplexer3')
-const Parser = require('tap-parser')
-const symbols = require('figures')
+import { bold, cyan, dim, green, red, underline } from 'colorette'
+import through from 'through2'
+import duplexer from 'duplexer3'
+import { Parser } from 'tap-parser'
+import symbols from 'figures'
 
 function isFinalStats (str) {
   return /^#\s(ok|tests|pass|fail|skip|failed):?\s{1,}\d?/.test(str)
@@ -25,14 +25,14 @@ function formatFail (f, hideStack) {
     pad(cyan(`Operator: ${f.diag.operator}`), 4),
     pad(cyan(`Expected: ${f.diag.expected}`), 4),
     pad(cyan(`Actual: ${f.diag.actual}`), 4),
-    pad(cyan(`At: ${f.diag.at}`), 4)
+    pad(cyan(`Fullname: ${f.fullname}`), 4)
   ]
 
   if (hideStack) {
     return err.join('\n')
   }
 
-  return err.concat(pad(cyan(`  Stack: ${prettyStack(f.diag.stack)}`))).join('\n')
+  return err.concat(pad(cyan(`  ${prettyStack(f.diag.stack)}`))).join('\n')
 }
 
 function tapOn (args) {
@@ -42,10 +42,6 @@ function tapOn (args) {
   const stream = duplexer(tap, output)
   let skippedTests = 0
   let lastStr = ''
-
-  if (args.disableColor) {
-    options.enabled = false
-  }
 
   tap.on('pass', assert => {
     output.push(pad(`${green(symbols.tick)} ${dim(assert.name)}\n`, 4))
@@ -107,4 +103,4 @@ function tapOn (args) {
   return stream
 }
 
-module.exports = tapOn
+export default tapOn

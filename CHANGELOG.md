@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.0
+
+### Breaking Changes
+
+- Converted package into a standard ESM module
+- Removed `At` from output as it's no longer included in the diag for `tap-parser`
+- Replaced `At` with `Fullname` which uses the errors fullname
+
+### Chore
+
+- Dependency updates
+
 ## v0.3.1
 
 ### Chore

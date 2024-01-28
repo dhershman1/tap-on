@@ -1,4 +1,4 @@
-const test = require('tape')
+import test from 'tape'
 
 test('a + b = ab', t => {
   t.same('a' + 'b', 'ab')

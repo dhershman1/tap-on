@@ -1,12 +1,16 @@
 {
   "name": "tap-on",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "A nicer way to handle tap output",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "prepack": "npm run lint",
     "test": "tape tests/pass.js | cross-env bin/tap-on",
-    "test:no:color": "tape tests/pass.js | cross-env bin/tap-on -d",
+    "test:fail": "tape tests/fail.js | cross-env bin/tap-on -u",
+    "test:pf": "tape tests/passAndFail.js | cross-env bin/tap-on",
+    "test:err": "tape tests/error.js | cross-env bin/tap-on",
+    "test:no:color": "tape tests/pass.js | cross-env bin/tap-on --no-color",
     "lint": "standard index.js | snazzy"
   },
   "bin": {
@@ -38,17 +42,17 @@
   },
   "homepage": "https://github.com/dhershman1/tap-on#readme",
   "dependencies": {
-    "colorette": "2.0.16",
-    "duplexer3": "0.1.4",
-    "figures": "3.2.0",
-    "minimist": "1.2.6",
-    "tap-parser": "11.0.1",
+    "colorette": "2.0.20",
+    "duplexer3": "1.0.0",
+    "figures": "6.0.1",
+    "minimist": "1.2.8",
+    "tap-parser": "15.3.1",
     "through2": "4.0.2"
   },
   "devDependencies": {
     "cross-env": "7.0.3",
     "snazzy": "9.0.0",
-    "standard": "16.0.4",
-    "tape": "5.5.2"
+    "standard": "17.1.0",
+    "tape": "5.7.4"
   }
 }
