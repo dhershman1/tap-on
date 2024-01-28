@@ -8,6 +8,7 @@
     "prepack": "npm run lint",
     "test": "tape tests/pass.js | cross-env bin/tap-on",
     "test:fail": "tape tests/fail.js | cross-env bin/tap-on",
+    "test:pf": "tape tests/passAndFail.js | cross-env bin/tap-on",
     "test:no:color": "tape tests/pass.js | cross-env bin/tap-on --no-color",
     "lint": "standard index.js | snazzy"
   },
